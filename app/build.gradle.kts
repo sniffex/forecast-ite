@@ -66,4 +66,14 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.8.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.8.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+
 }
