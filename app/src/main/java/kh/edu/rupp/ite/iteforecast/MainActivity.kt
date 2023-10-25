@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting("Forecast")
                 }
             }
         }
@@ -36,10 +36,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier
     )
 }
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ITEForecastTheme {
-        Greeting("Android")
+        Greeting("Forecast")
     }
 }
