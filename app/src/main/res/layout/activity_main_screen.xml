@@ -52,7 +52,7 @@
                         android:id="@+id/imageView"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        app:srcCompat="@drawable/cloud" />
+                        android:src="@drawable/cloud" />
 
                     <TextView
                         android:id="@+id/textView2"
