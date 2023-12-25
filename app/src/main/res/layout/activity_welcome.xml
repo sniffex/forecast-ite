@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Weather App"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/weatherInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="272dp"
+        android:orientation="vertical">
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location: New York, USA"
+            android:textSize="18sp" />
+
+        <!-- Temperature -->
+        <TextView
+            android:id="@+id/textViewTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Temperature: 25°C"
+            android:textSize="18sp" />
+
+        <!-- Weather Conditions -->
+        <TextView
+            android:id="@+id/textViewWeatherConditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Conditions: Clear sky"
+            android:textSize="18sp" />
+
+        <!-- Other weather information can be added here -->
+
+    </LinearLayout>
+
+
+</RelativeLayout>
