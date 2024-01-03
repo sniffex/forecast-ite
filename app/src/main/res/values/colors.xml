@@ -9,6 +9,14 @@
     <color name="white">#FFFFFFFF</color>
 
 
+
     <color name="blackBlue">#040720</color>
+    <color name="primary">#F1EFEF</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="dark">#A9A9A9</color>
+    <color name="gray">#808080</color>
+    <color name="night">#0C090A</color>
+    <color name="soft_green">#B2C8BA</color>
+    <color name="midnight_rose">#2B2730</color>
 
 </resources>
