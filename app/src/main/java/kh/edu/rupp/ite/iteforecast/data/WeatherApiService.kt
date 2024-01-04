@@ -4,10 +4,9 @@ import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 interface WeatherApiService {
-    @GET("current.json")
+    @GET("weather")
     suspend fun getCurrentWeather(
         @Query("q") cityName: String,
-        @Query("key") apiKey: String,
-        @Query("aqi") includeAqi: String = "no"
+        @Query("appid") apiKey: String
     ): WeatherResponse
 }
