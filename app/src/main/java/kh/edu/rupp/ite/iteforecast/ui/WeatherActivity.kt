@@ -3,6 +3,7 @@ package kh.edu.rupp.ite.iteforecast.ui
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -10,10 +11,8 @@ import kh.edu.rupp.ite.iteforecast.R
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
 import kh.edu.rupp.ite.iteforecast.network.WeatherService
-import kh.edu.rupp.ite.iteforecast.ui.WeatherViewModel
-import kh.edu.rupp.ite.iteforecast.ui.WeatherViewModelFactory
 
-class WeatherActivity : AppCompatActivity() {
+class WeatherActivity : ComponentActivity() {
 
     private val viewModel: WeatherViewModel by viewModels {
         WeatherViewModelFactory(WeatherRepository(WeatherService.apiService))
@@ -33,7 +32,7 @@ class WeatherActivity : AppCompatActivity() {
         })
 
         // Trigger the API call
-        viewModel.getWeather("Delhi") // Replace with the desired city name
+        viewModel.getWeather("tokyo") // Replace with the desired city name
     }
 
     private fun updateUI(weatherResponse: WeatherResponse) {
