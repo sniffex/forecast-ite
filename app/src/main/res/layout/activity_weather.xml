@@ -42,6 +42,15 @@
         android:text="Humidity"
         android:textSize="16sp"/>
 
+    <TextView
+        android:id="@+id/timezoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weatherDescriptionTextView"
+        android:layout_marginTop="41dp"
+        android:text="Timezone"
+        android:textSize="16sp" />
+
     <!-- Add more TextViews or UI components as needed -->
 
 </RelativeLayout>

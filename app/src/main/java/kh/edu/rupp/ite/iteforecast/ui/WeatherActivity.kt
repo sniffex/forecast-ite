@@ -32,13 +32,19 @@ class WeatherActivity : ComponentActivity() {
         })
 
         // Trigger the API call
-        viewModel.getWeather("tokyo") // Replace with the desired city name
+        viewModel.getWeather("phnom penh") // Replace with the desired city name
     }
 
+    fun kelvinToCelsius(kelvin: Double): Double {
+        return kelvin - 273.15
+    }
     private fun updateUI(weatherResponse: WeatherResponse) {
         findViewById<TextView>(R.id.cityTextView).text = weatherResponse.name
-        findViewById<TextView>(R.id.temperatureTextView).text = "${weatherResponse.main.temp} °C"
+        // Convert temperature from Kelvin to Celsius
+        val celsiusTemperature = kelvinToCelsius(weatherResponse.main.temp).toInt()
+        findViewById<TextView>(R.id.temperatureTextView).text = "$celsiusTemperature °C"
         findViewById<TextView>(R.id.weatherDescriptionTextView).text = weatherResponse.weather[0].description
         findViewById<TextView>(R.id.humidityTextView).text = "Humidity: ${weatherResponse.main.humidity}%"
+        findViewById<TextView>(R.id.timezoneTextView).text = "Timezone: ${weatherResponse.timezone}"
     }
 }
