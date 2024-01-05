@@ -2,56 +2,50 @@ package kh.edu.rupp.ite.iteforecast.model
 
 import com.google.gson.annotations.SerializedName
 
+data class Location(
+    val name: String,
+    val region: String,
+    val country: String,
+    val lat: Double,
+    val lon: Double,
+    val tz_id: String,
+    val localtime_epoch: Long,
+    val localtime: String
+)
+
+data class Condition(
+    val text: String,
+    val icon: String,
+    val code: Int
+)
+
+data class Current(
+    val last_updated_epoch: Long,
+    val last_updated: String,
+    val temp_c: Double,
+    val temp_f: Double,
+    val is_day: Int,
+    val condition: Condition,
+    val wind_mph: Double,
+    val wind_kph: Double,
+    val wind_degree: Int,
+    val wind_dir: String,
+    val pressure_mb: Double,
+    val pressure_in: Double,
+    val precip_mm: Double,
+    val precip_in: Double,
+    val humidity: Int,
+    val cloud: Int,
+    val feelslike_c: Double,
+    val feelslike_f: Double,
+    val vis_km: Double,
+    val vis_miles: Double,
+    val uv: Double,
+    val gust_mph: Double,
+    val gust_kph: Double
+)
+
 data class WeatherResponse(
-    @SerializedName("coord") val coord: Coord,
-    @SerializedName("weather") val weather: List<Weather>,
-    @SerializedName("base") val base: String,
-    @SerializedName("main") val main: Main,
-    @SerializedName("visibility") val visibility: Int,
-    @SerializedName("wind") val wind: Wind,
-    @SerializedName("clouds") val clouds: Clouds,
-    @SerializedName("dt") val dt: Long,
-    @SerializedName("sys") val sys: Sys,
-    @SerializedName("timezone") val timezone: Int,
-    @SerializedName("id") val id: Long,
-    @SerializedName("name") val name: String,
-    @SerializedName("cod") val cod: Int
-)
-
-data class Coord(
-    @SerializedName("lon") val lon: Double,
-    @SerializedName("lat") val lat: Double
-)
-
-data class Weather(
-    @SerializedName("id") val id: Long,
-    @SerializedName("main") val main: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("icon") val icon: String
-)
-
-data class Main(
-    @SerializedName("temp") val temp: Double,
-    @SerializedName("feels_like") val feelsLike: Double,
-    @SerializedName("temp_min") val tempMin: Double,
-    @SerializedName("temp_max") val tempMax: Double,
-    @SerializedName("pressure") val pressure: Int,
-    @SerializedName("humidity") val humidity: Int
-)
-
-data class Wind(
-    @SerializedName("speed") val speed: Double,
-    @SerializedName("deg") val deg: Double
-)
-
-data class Clouds(
-    @SerializedName("all") val all: Int
-)
-
-data class Sys(
-    @SerializedName("type") val type: Int,
-    @SerializedName("id") val id: Long,
-    @SerializedName("country") val country: String,
-    @SerializedName("sunrise") val sunrise: Long,
-    @SerializedName("sunset") val sunset: Long
+    val location: Location,
+    val current: Current
 )
