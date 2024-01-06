@@ -19,4 +19,7 @@
     <color name="soft_green">#B2C8BA</color>
     <color name="midnight_rose">#2B2730</color>
 
+    <color name="search_view_dark">#AB090909</color>
+    <color name="search_view_light">#D5FFFFFF</color>
+    <color name="progress_bar">#30FFBD</color>
 </resources>

@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             app:cardCornerRadius="25dp"
             tools:ignore="MissingConstraints">
                 <LinearLayout
@@ -42,10 +42,10 @@
                                         android:textSize="30dp"
                                         android:textStyle="bold" />
                                     <TextView
-                                        android:id="@+id/cityName"
+                                        android:id="@+id/humidityText"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Phnom Penh"
+                                        android:text="Humidity"
                                         android:textColor="@color/midnight_rose"
                                         android:textSize="12dp"
                                         android:textStyle="bold" />
@@ -64,6 +64,7 @@
                                     android:layout_height="match_parent">
 
                                     <TextView
+                                        android:id="@+id/temperatureTextView"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="27"
@@ -99,6 +100,11 @@
                                         android:textColor="@color/midnight_rose"
                                         android:textSize="12dp"
                                         android:textStyle="bold" />
+                                    <ImageView
+                                        android:id="@+id/weatherIcon"
+                                        android:layout_width="48dp"
+                                        android:layout_height="48dp"
+                                        android:contentDescription="icon" />
                                 </LinearLayout>
 
                                 <View
