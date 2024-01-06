@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ui.WeatherActivity">
+    tools:context=".view.WeatherActivity">
 
     <TextView
         android:id="@+id/cityTextView"
@@ -15,7 +15,7 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/temperatureTextView"
+        android:id="@+id/temperatureText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cityTextView"
