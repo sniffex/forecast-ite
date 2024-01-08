@@ -1,5 +1,5 @@
 // ui/WeatherActivity.kt
-package kh.edu.rupp.ite.iteforecast.view
+package kh.edu.rupp.ite.iteforecast.view.activity
 
 import android.os.Bundle
 import android.widget.ImageView
@@ -23,7 +23,7 @@ class WeatherActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_location_card)
+        setContentView(R.layout.fragment_home)
 
         // Observe LiveData and update UI accordingly
         viewModel.weatherData.observe(this, Observer { weatherResponse ->
@@ -43,13 +43,23 @@ class WeatherActivity : ComponentActivity() {
         val current = weatherResponse.current
         val location = weatherResponse.location
         val condition = current.condition
+        val lastUpdateDate : String = current.last_updated
         val conditionIcon= condition.icon
+        val feelsLike = current.feelslike_c
+        val uv = current.uv
+        val wind = current.wind_kph
+        val windDir = current.wind_dir
 
         findViewById<TextView>(R.id.locationText).text = location.name
-        findViewById<TextView>(R.id.temperatureTextView).text = "${current.temp_c}"
-        findViewById<TextView>(R.id.weatherText).text = condition.text
+        findViewById<TextView>(R.id.temperatureText).text = "${current.temp_c}"
+        findViewById<TextView>(R.id.conditionText).text = condition.text
         findViewById<TextView>(R.id.humidityText).text = "Humidity: ${current.humidity}%"
-        findViewById<ImageView>(R.id.weatherIcon).setImageURI(conditionIcon)
+        findViewById<ImageView>(R.id.conditionImage).setImageURI(conditionIcon)
+        findViewById<TextView>(R.id.lastUpdatedText).text = "Last updated: $lastUpdateDate"
+        findViewById<TextView>(R.id.feelsLikeTemp).text = "Feels like:$feelsLike°C"
+        findViewById<TextView>(R.id.uvIndexText).text = "UV Index: $uv"
+        findViewById<TextView>(R.id.windText).text = "Wind:$wind km/h"
+        findViewById<TextView>(R.id.windDirText).text = "($windDir)"
     }
 }
 
