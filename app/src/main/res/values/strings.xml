@@ -11,4 +11,26 @@
         and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </string>
 
+
+    <string name="location">Location</string>
+    <string name="home">Home</string>
+    <string name="last_updated">Last Updated: 2023-01-13 14:30</string>
+    <string name="mainTemp">--℃</string>
+    <string name="tempCondition">Mostly Cloudy</string>
+    <string name="feels_like">Feels Like: --℃</string>
+    <string name="highTemp">H: 27℃</string>
+    <string name="lowTemp">L : 21℃</string>
+    <string name="forecastLabel">Forecast</string>
+    <string name="sunrise">Sunrise : 6:00am</string>
+    <string name="sunset">Sunset : 6:00pm</string>
+    <string name="humidity">Humidity : 10%</string>
+    <string name="wind">Wind : 10km/h</string>
+    <string name="uvIndex">UV Index : 1</string>
+    <string name="chanceToRain">Rain : 10%</string>
+    <string name="dayForecastLabel">5-day forecast</string>
+    <string name="imageDesc1">DynamicImage</string>
+    <string name="direction">direction</string>
+    <string name="tempDaily">21℃</string>
+    <string name="TimeDaily">11:00</string>
+
 </resources>
