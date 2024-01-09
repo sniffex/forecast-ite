@@ -23,8 +23,7 @@ import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModelFactory
 class WeatherActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWeatherBinding
-
-    private val viewModel: WeatherViewModel by viewModels {
+private val viewModel: WeatherViewModel by viewModels {
         WeatherViewModelFactory(WeatherRepository(WeatherService.apiService))
     }
 
@@ -61,13 +60,13 @@ class WeatherActivity : AppCompatActivity() {
 //        viewModel.getWeather("London")
 
     }
-
-   private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment){
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.activityWeatherFragmentContainer, fragment)
         transaction.commit()
-   }
+    }
+
 
 //    private fun updateUI(weatherResponse: WeatherResponse) {
 //        val current = weatherResponse.current
