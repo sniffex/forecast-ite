@@ -37,6 +37,8 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        viewBinding = true
+        dataBinding = true
         compose = true
     }
     composeOptions {
@@ -68,7 +70,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    implementation ("com.google.android.material:material:1.11.0")
+    implementation ("com.google.android.material:material:1.8.0")
+
     implementation("androidx.cardview:cardview:1.0.0")
 
     // Retrofit

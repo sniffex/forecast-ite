@@ -3,17 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
     android:orientation="vertical"
-    >
+    tool:context=".view.activity.WeatherActivity">
+
 
     <FrameLayout
+        android:id="@+id/activityWeatherFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:menu="@menu/weather_activity"
+        android:id="@+id/activityWeatherBottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="60dp"
+        app:itemIconTint="@color/soft_green"
+        app:menu="@menu/weather_activity" />
     
 </LinearLayout>
