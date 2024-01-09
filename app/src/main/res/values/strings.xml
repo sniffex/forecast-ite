@@ -32,5 +32,6 @@
     <string name="direction">direction</string>
     <string name="tempDaily">21℃</string>
     <string name="TimeDaily">11:00</string>
+    <string name="hourlyDate">Jan/08</string>
 
 </resources>
