@@ -18,6 +18,7 @@
         android:theme="@style/Base.Theme.ITEForecast"
         tools:targetApi="31">
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".view.activity.WeatherActivity"
             android:exported="true"
             android:theme="@style/Base.Theme.ITEForecast"
