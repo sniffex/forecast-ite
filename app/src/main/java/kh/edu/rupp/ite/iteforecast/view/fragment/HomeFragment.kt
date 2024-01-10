@@ -49,7 +49,7 @@ class HomeFragment: Fragment() {
         val condition = current.condition
 
         binding.locationText.text = location.name
-        binding.temperatureText.text = "${current.temp_c}"
+        binding.temperatureText.text = "${current.temp_c}°C"
         binding.conditionText.text = condition.text
         binding.humidityText.text = "Humidity: ${current.humidity}%"
 
