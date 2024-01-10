@@ -32,5 +32,20 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
             }
         }
     }
+    fun getWeatherByLonLat(lon: Double, lat: Double) {
+        viewModelScope.launch {
+            try {
+//                val apiKey = "YOUR_API_KEY"  // Replace with your actual API key
+//                val apiUrl = "http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$lon,$lat&aqi=no"
+
+                val response = repository.getCurrentWeatherByLonLat(lon, lat)
+                Log.d("WeatherViewModel", "API Response: $response")
+                _weatherData.value = response
+            } catch (e: Exception) {
+                Log.e("WeatherViewModel", "API Error: ${e.message}", e)
+                _errorMessage.postValue("Error fetching weather data")
+            }
+        }
+    }
 
 }
