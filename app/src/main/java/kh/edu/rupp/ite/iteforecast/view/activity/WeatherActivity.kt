@@ -2,19 +2,13 @@
 package kh.edu.rupp.ite.iteforecast.view.activity
 
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import kh.edu.rupp.ite.iteforecast.R
-import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
 import kh.edu.rupp.ite.iteforecast.network.WeatherService
-import com.bumptech.glide.Glide
 import kh.edu.rupp.ite.iteforecast.databinding.ActivityWeatherBinding
 import kh.edu.rupp.ite.iteforecast.view.fragment.HomeFragment
 import kh.edu.rupp.ite.iteforecast.view.fragment.LocationFragment
@@ -24,24 +18,23 @@ import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModelFactory
 class WeatherActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWeatherBinding
-private val viewModel: WeatherViewModel by viewModels {
+    private val viewModel: WeatherViewModel by viewModels {
         WeatherViewModelFactory(WeatherRepository(WeatherService.apiService))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-
         binding = ActivityWeatherBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
         binding.activityWeatherBottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.iconHome -> replaceFragment(HomeFragment())
                 R.id.iconLocation -> replaceFragment(LocationFragment())
 
-                else-> {
+                else -> {
 
                 }
             }
@@ -49,20 +42,10 @@ private val viewModel: WeatherViewModel by viewModels {
             true
         }
 
-        // Observe LiveData and update UI accordingly
-//        viewModel.weatherData.observe(this, Observer { weatherResponse ->
-//            updateUI(weatherResponse)
-//        })
-
-//        viewModel.errorMessage.observe(this, Observer { errorMessage ->
-//            // Handle error message
-//        })
-
-        // Trigger the API call
-//        viewModel.getWeather("London")
-
     }
-    private fun replaceFragment(fragment: Fragment){
+
+
+    private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.activityWeatherFragmentContainer, fragment)
@@ -70,6 +53,9 @@ private val viewModel: WeatherViewModel by viewModels {
     }
 
 
+}
+
+
 //    private fun updateUI(weatherResponse: WeatherResponse) {
 //        val current = weatherResponse.current
 //        val location = weatherResponse.location
@@ -115,7 +101,7 @@ private val viewModel: WeatherViewModel by viewModels {
 //        findViewById<TextView>(R.id.windText).text = "Wind:$wind km/h"
 //        findViewById<TextView>(R.id.windDirText).text = "($windDir)"
 //    }
-}
+
 
 //private fun ImageView.setImageURI(icon: String) {
 //    val fullUrl = "https:$icon"
