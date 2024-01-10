@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.iteforecast.viewmodel
+package kh.edu.rupp.ite.iteforecast.ui
 
 // WeatherViewModel.kt
 import android.util.Log
@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() {
