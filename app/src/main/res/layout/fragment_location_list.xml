@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blackBlue"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:padding="20dp"
+        android:padding="15dp"
         android:orientation="vertical"
-        android:layout_height="match_parent"
-        >
-
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/dayDateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Weather"
-                android:textColor="@color/midnight_rose"
+                android:textColor="#ffffff"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -33,48 +31,44 @@
                 android:layout_height="0dp"
                 android:layout_weight="100" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/baseline_list_24" />
 
         </LinearLayout>
-
-
-        <SearchView
-            android:id="@+id/search_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            android:iconifiedByDefault="false"
-            android:queryBackground="@color/transparent"
-            android:queryHint="Choose City"
-            android:theme="@style/Search.Theme.WeatherApp"/>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:background="@color/primary"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_layout"
+            android:paddingVertical="5dp"
+            android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0"
-                tools:listitem="@layout/fragment_location_card"/>
-
+                app:cardCornerRadius="15dp"
+                android:layout_height="wrap_content">
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#80A9A9A9"
+                    android:queryHint="Search for City"
+                    android:iconifiedByDefault="false"
+                    android:padding="10dp"
+                    />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="10dp"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/fragment_location_card"
+                android:layout_height="0dp"/>
+
+        </ScrollView>
 
 
     </LinearLayout>
