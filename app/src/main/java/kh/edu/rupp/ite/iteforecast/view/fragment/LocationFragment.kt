@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -27,6 +28,7 @@ class LocationFragment : Fragment() {
     private lateinit var searchView: SearchView
     private lateinit var adapter: WeatherAdapter
     private var isQuerySubmitted = false
+    private val searchedCities = mutableSetOf<String>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,31 +50,26 @@ class LocationFragment : Fragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (!isQuerySubmitted) {
-                    query?.let {
-                        isQuerySubmitted = true
+                // Handle search query submit
+                query?.let {
+                    // Check if the city has already been searched
+                    if (searchedCities.contains(query)) {
+                        // Handle the case where the city has already been searched
+                        showToast("City '$query' has already been added.")
+                    } else {
+                        // Add the city to the set to keep track of searched cities
+                        searchedCities.add(query)
                         viewModel.getWeather(it)
+                        showToast("City '$query' has been added.")
                     }
                 }
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 // Handle text change if needed
                 return true
             }
         })
-        //error when adding 2 city need to change to other fragment or else cannot add
-
-
-
-        if (savedInstanceState !=null) {
-            val savedQuery = savedInstanceState.getString("query")
-            searchView.setQuery(savedQuery, false)
-            savedQuery?.let {
-                viewModel.getWeather(it)
-            }
-        }
 
         viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherResponse ->
             adapter.updateData(weatherResponse)
@@ -83,6 +80,10 @@ class LocationFragment : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("query", searchView.query.toString())
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 

@@ -25,6 +25,7 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
             try {
                 val response = repository.getCurrentWeather(cityName)
                 Log.d("WeatherViewModel", "API Response: $response")
+                showToast("API Response: $response")
 
                 val newList = (_weatherData.value ?: emptyList()) + response
                 _weatherData.value = newList
@@ -32,6 +33,7 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
             } catch (e: Exception) {
                 Log.e("WeatherViewModel", "API Error: ${e.message}", e)
                 _errorMessage.postValue("Error fetching weather data")
+                showToast("Error fetching weather data")
             }
         }
     }
@@ -41,14 +43,20 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
 
                 val response = repository.getCurrentWeatherByLonLat(lon, lat)
                 Log.d("WeatherViewModel", "API Response: $response")
+                showToast("API Response: $response")
 
                 val newList = (_weatherData.value ?: emptyList()) + response
                 _weatherData.value = newList
             } catch (e: Exception) {
                 Log.e("WeatherViewModel", "API Error: ${e.message}", e)
                 _errorMessage.postValue("Error fetching weather data")
+                showToast("Error fetching weather data")
             }
         }
+    }
+
+    private fun showToast(message: String) {
+        _errorMessage.postValue(message)
     }
 
 }
