@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -17,19 +18,15 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
 import kh.edu.rupp.ite.iteforecast.R
-import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
 import kh.edu.rupp.ite.iteforecast.databinding.FragmentHomeBinding
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
-import kh.edu.rupp.ite.iteforecast.network.WeatherService
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
-import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModelFactory
+
 
 class HomeFragment: Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: WeatherViewModel by viewModels {
-        WeatherViewModelFactory(WeatherRepository(WeatherService.apiService))
-    }
+    private val viewModel: WeatherViewModel by viewModels ()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -78,12 +75,12 @@ class HomeFragment: Fragment() {
         // Make the API call to get weather data for the specified location
         viewModel.getWeather(location)
     }
-    private fun updateLocationByLonLat(lon: Double, lat: Double) {
-        viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherResponse ->
-            updateUI(weatherResponse)
-        })
-        viewModel.getWeatherByLonLat(lon, lat)
-    }
+//    private fun updateLocationByLonLat(lon: Double, lat: Double) {
+//        viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherResponse ->
+//            updateUI(weatherResponse)
+//        })
+//        viewModel.getWeatherByLonLat(lon, lat)
+//    }
 
     private fun loadImageWithGlide(imageView: ImageView, icon: String) {
         val fullUrl = "https:$icon"
