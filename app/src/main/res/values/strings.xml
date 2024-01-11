@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ITEForecast</string>
+    <string name="app_name">Forecast</string>
     <string name="title_activity_home">Welcome!</string>
     <string name="large_text">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.

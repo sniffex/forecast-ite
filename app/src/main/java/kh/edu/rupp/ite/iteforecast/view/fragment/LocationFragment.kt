@@ -26,7 +26,7 @@ class LocationFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
     private lateinit var adapter: WeatherAdapter
-
+    private var isQuerySubmitted = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,8 +48,11 @@ class LocationFragment : Fragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    viewModel.getWeather(it)
+                if (!isQuerySubmitted) {
+                    query?.let {
+                        isQuerySubmitted = true
+                        viewModel.getWeather(it)
+                    }
                 }
                 return false
             }
@@ -59,6 +62,8 @@ class LocationFragment : Fragment() {
                 return true
             }
         })
+
+
 
         if (savedInstanceState !=null) {
             val savedQuery = savedInstanceState.getString("query")
