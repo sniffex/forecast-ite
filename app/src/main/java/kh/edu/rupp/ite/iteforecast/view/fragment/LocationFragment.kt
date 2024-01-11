@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +15,6 @@ import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
 import kh.edu.rupp.ite.iteforecast.databinding.FragmentLocationListBinding
 import kh.edu.rupp.ite.iteforecast.network.WeatherService
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
-import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModelFactory
 
 class LocationFragment : Fragment() {
@@ -61,6 +59,14 @@ class LocationFragment : Fragment() {
                 return true
             }
         })
+
+        if (savedInstanceState !=null) {
+            val savedQuery = savedInstanceState.getString("query")
+            searchView.setQuery(savedQuery, false)
+            savedQuery?.let {
+                viewModel.getWeather(it)
+            }
+        }
 
         viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherResponse ->
             adapter.updateData(weatherResponse)

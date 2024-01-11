@@ -15,16 +15,16 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     private val weatherList: MutableList<WeatherResponse> = mutableListOf()
 
-//    fun updateData(newWeatherList: List<WeatherResponse>) {
-//        weatherList.clear()
-//        weatherList.addAll(newWeatherList)
-//        notifyDataSetChanged()
-//    }
-
-    fun updateData(newData: WeatherResponse) {
-        weatherList.add(newData)
+    fun updateData(newWeatherList: List<WeatherResponse>) {
+        weatherList.clear()
+        weatherList.addAll(newWeatherList)
         notifyDataSetChanged()
     }
+
+//    fun updateData(newData: WeatherResponse) {
+//        weatherList.add(newData)
+//        notifyDataSetChanged()
+//    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_location_card, parent, false)
