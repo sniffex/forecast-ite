@@ -6,14 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
+import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kotlinx.coroutines.launch
 
 class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() {
 
-    private val _weatherData = MutableLiveData<WeatherResponse>()
-    val weatherData: LiveData<WeatherResponse>
+    private val _weatherData = MutableLiveData<List<WeatherResponse>>()
+    val weatherData: LiveData<List<WeatherResponse>>
         get() = _weatherData
 
     private val _errorMessage = MutableLiveData<String>()
@@ -25,7 +25,10 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
             try {
                 val response = repository.getCurrentWeather(cityName)
                 Log.d("WeatherViewModel", "API Response: $response")
-                _weatherData.value = response
+
+                val newList = (_weatherData.value ?: emptyList()) + response
+                _weatherData.value = newList
+
             } catch (e: Exception) {
                 Log.e("WeatherViewModel", "API Error: ${e.message}", e)
                 _errorMessage.postValue("Error fetching weather data")
@@ -40,7 +43,9 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
 
                 val response = repository.getCurrentWeatherByLonLat(lon, lat)
                 Log.d("WeatherViewModel", "API Response: $response")
-                _weatherData.value = response
+
+                val newList = (_weatherData.value ?: emptyList()) + response
+                _weatherData.value = newList
             } catch (e: Exception) {
                 Log.e("WeatherViewModel", "API Error: ${e.message}", e)
                 _errorMessage.postValue("Error fetching weather data")
