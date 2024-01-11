@@ -1,6 +1,7 @@
 package kh.edu.rupp.ite.iteforecast.view.fragment
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import kh.edu.rupp.ite.iteforecast.adapter.WeatherAdapter
 import kh.edu.rupp.ite.iteforecast.data.WeatherRepository
 import kh.edu.rupp.ite.iteforecast.databinding.FragmentLocationListBinding
+import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.network.WeatherService
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModelFactory
@@ -29,6 +32,9 @@ class LocationFragment : Fragment() {
     private lateinit var adapter: WeatherAdapter
     private var isQuerySubmitted = false
     private val searchedCities = mutableSetOf<String>()
+    private val sharedPreferences by lazy {
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,6 +53,8 @@ class LocationFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
+
+        restoreStateFromSharedPrefs()
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -77,9 +85,33 @@ class LocationFragment : Fragment() {
 
     }
 
+    private fun restoreStateFromSharedPrefs() {
+        // Restore adapter data here
+        val weatherDataJson = sharedPreferences.getString("weather_data", null)
+        if (weatherDataJson != null) {
+            val weatherData = Gson().fromJson(weatherDataJson, Array<WeatherResponse>::class.java)
+            adapter.updateData(weatherData.toList())
+        }
+    }
+
+    private fun saveStateToSharedPrefs() {
+        with(sharedPreferences.edit()) {
+
+            // Save adapter data here
+            val weatherDataJson = Gson().toJson(adapter.weatherList)
+            putString("weather_data", weatherDataJson)
+
+            apply()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveStateToSharedPrefs()
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("query", searchView.query.toString())
     }
 
     private fun showToast(message: String) {

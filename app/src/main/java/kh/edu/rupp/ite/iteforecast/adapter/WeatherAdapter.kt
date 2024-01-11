@@ -13,11 +13,11 @@ import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 
 class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
-    private val weatherList: MutableList<WeatherResponse> = mutableListOf()
+    public val weatherList: MutableList<WeatherResponse> = mutableListOf()
 
     fun updateData(newWeatherList: List<WeatherResponse>) {
-        weatherList.clear()
-        weatherList.addAll(newWeatherList)
+        this.weatherList.clear()
+        this.weatherList.addAll(newWeatherList)
         notifyDataSetChanged()
     }
 

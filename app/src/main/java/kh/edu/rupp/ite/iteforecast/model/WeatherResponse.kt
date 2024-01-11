@@ -1,7 +1,5 @@
 package kh.edu.rupp.ite.iteforecast.model
 
-import com.google.gson.annotations.SerializedName
-
 data class Location(
     val name: String,
     val region: String,
@@ -134,3 +132,6 @@ data class WeatherResponse(
     val current: Current,
     val forecast: Forecast
 )
+
+
+
