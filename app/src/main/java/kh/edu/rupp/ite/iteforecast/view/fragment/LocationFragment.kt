@@ -62,6 +62,7 @@ class LocationFragment : Fragment() {
                 return true
             }
         })
+        //error when adding 2 city need to change to other fragment or else cannot add
 
 
 
