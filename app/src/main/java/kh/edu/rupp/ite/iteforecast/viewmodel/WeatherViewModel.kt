@@ -61,3 +61,6 @@ class WeatherViewModel : ViewModel() {
 suspend fun getCurrentWeather(cityName: String): WeatherResponse {
     return WeatherService.apiService.getCurrentWeather(cityName, WeatherService.API_KEY)
 }
+suspend fun getHourlyForecast(cityName: String): WeatherResponse {
+    return WeatherService.apiService.getHourlyForecast(cityName, WeatherService.API_KEY)
+}
