@@ -76,9 +76,8 @@ class HomeFragment: Fragment() {
         binding.uvIndexText.text = "UV Index: ${weatherResponse[0].current.uv}"
         binding.rainText.text = "Rain: ${weatherResponse[0].forecast.forecastday[0].day.totalprecip_mm} mm"
 
-//        binding.hourlyShortDateText.text = dateFormat(weatherResponse[0].forecast.forecastday[0].date)
-//        binding.hourlyTempText.text = "${weatherResponse[0].forecast.forecastday[0].day.avgtemp_c}°C"
-//        loadImageWithGlide(binding.hourlyWeatherIcon, weatherResponse[0].forecast.forecastday[0].day.condition.icon)
+        binding.highTemp.text = "H: ${weatherResponse[0].forecast.forecastday[0].day.maxtemp_c}°C"
+        binding.lowTemp.text = "L: ${weatherResponse[0].forecast.forecastday[0].day.mintemp_c}°C"
         setupHourlyRecyclerView(weatherResponse[0].forecast.forecastday[0].hour)
     }
 
