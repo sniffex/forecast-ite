@@ -18,9 +18,9 @@
         android:id="@+id/activityWeatherBottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/transparent"
-        app:itemBackground="@color/transparent"
-        android:background="@drawable/menu_bg_shadow"
+        app:backgroundTint="@color/gray"
+        app:itemBackground="@color/gray"
+        android:background="@color/gray"
         app:menu="@menu/weather_activity" />
-    
+
 </LinearLayout>
