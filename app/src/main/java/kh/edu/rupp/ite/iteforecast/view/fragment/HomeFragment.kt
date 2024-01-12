@@ -2,31 +2,36 @@ package kh.edu.rupp.ite.iteforecast.view.fragment
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.icu.text.SimpleDateFormat
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
 import kh.edu.rupp.ite.iteforecast.R
-import kh.edu.rupp.ite.iteforecast.adapter.HourlyForecastAdapter
+import kh.edu.rupp.ite.iteforecast.adapter.HourlyAdapter
 import kh.edu.rupp.ite.iteforecast.databinding.FragmentHomeBinding
+import kh.edu.rupp.ite.iteforecast.model.Hour
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
-
+import java.util.Date
 
 class HomeFragment: Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+
     private val viewModel: WeatherViewModel by viewModels ()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +47,6 @@ class HomeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Request location permission and get location when the fragment is created
         requestLocationPermission()
-        // Example: Call the API for London when the fragment is created
 //        updateWeatherForLocation("London")
 //        updateLocationByLonLat(48.8567,2.3508)
     }
@@ -67,13 +71,25 @@ class HomeFragment: Fragment() {
         binding.windText.text = "Wind: ${current.wind_kph} km/h"
         binding.windDirText.text = "(${current.wind_dir})"
 
-        binding.recyclerViewHourlyForecast.adapter = HourlyForecastAdapter(weatherResponse[0].forecast.forecastday[0].hour)
-
         binding.sunriseText.text = "Sunrise: ${weatherResponse[0].forecast.forecastday[0].astro.sunrise}"
         binding.sunsetText.text = "Sunset: ${weatherResponse[0].forecast.forecastday[0].astro.sunset}"
         binding.uvIndexText.text = "UV Index: ${weatherResponse[0].current.uv}"
         binding.rainText.text = "Rain: ${weatherResponse[0].forecast.forecastday[0].day.totalprecip_mm} mm"
+
+//        binding.hourlyShortDateText.text = dateFormat(weatherResponse[0].forecast.forecastday[0].date)
+//        binding.hourlyTempText.text = "${weatherResponse[0].forecast.forecastday[0].day.avgtemp_c}°C"
+//        loadImageWithGlide(binding.hourlyWeatherIcon, weatherResponse[0].forecast.forecastday[0].day.condition.icon)
+        setupHourlyRecyclerView(weatherResponse[0].forecast.forecastday[0].hour)
     }
+
+    private fun setupHourlyRecyclerView(hourlyDataList: List<Hour>) {
+
+        val hourlyAdapter = HourlyAdapter(hourlyDataList)
+        binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.hourlyRecyclerView.adapter = hourlyAdapter
+    }
+
+
 
     private fun updateWeatherForLocation(location: String) {
         // Observe the LiveData from the ViewModel
@@ -84,12 +100,7 @@ class HomeFragment: Fragment() {
         // Make the API call to get weather data for the specified location
         viewModel.getWeather(location)
     }
-//    private fun updateLocationByLonLat(lon: Double, lat: Double) {
-//        viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherResponse ->
-//            updateUI(weatherResponse)
-//        })
-//        viewModel.getWeatherByLonLat(lon, lat)
-//    }
+
 
     private fun loadImageWithGlide(imageView: ImageView, icon: String) {
         val fullUrl = "https:$icon"

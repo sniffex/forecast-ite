@@ -1,5 +1,6 @@
 package kh.edu.rupp.ite.iteforecast.adapter
 
+import android.icu.text.SimpleDateFormat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,36 +8,52 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kh.edu.rupp.ite.iteforecast.R
 import kh.edu.rupp.ite.iteforecast.model.Hour
+import java.time.LocalDateTime
+import java.util.Date
+import java.util.Locale
 
-class HourlyForecastAdapter(var hourlyForecast: List<Hour>) : RecyclerView.Adapter<HourlyForecastAdapter.HourlyForecastViewHolder>() {
+class HourlyAdapter(private val hourlyDataList: List<Hour>) :
+    RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
 
-    class HourlyForecastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val forecastTextView: TextView = itemView.findViewById(R.id.hourlyShortDateText)
-        val forecastTempTextView: TextView = itemView.findViewById(R.id.hourlyTempText)
-        val forecastIconImageView: ImageView = itemView.findViewById(R.id.hourlyWeatherIcon)
-
+    class HourlyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val hourlyShortDateText: TextView = itemView.findViewById(R.id.hourlyShortDateText)
+        val hourlyWeatherIcon: ImageView = itemView.findViewById(R.id.hourlyWeatherIcon)
+        val hourlyTempText: TextView = itemView.findViewById(R.id.hourlyTempText)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyForecastViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_hourly_forecast, parent, false)
-        return HourlyForecastViewHolder(view)
+        return HourlyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: HourlyForecastViewHolder, position: Int) {
-        val hour = hourlyForecast[position]
+    override fun onBindViewHolder(holder: HourlyViewHolder, position: Int) {
+        val hourlyData = hourlyDataList[position]
 
-        holder.forecastTextView.text = hour.time
-        holder.forecastTempTextView.text = "${hour.temp_c}"
-        Log.d("HourlyForecastAdapter", "Binding data at position $position: ${hour.time}, ${hour.temp_c}°C")
+        holder.hourlyShortDateText.text = timeFormat(hourlyData.time)
         // Load weather icon using Glide
-//        holder.forecastIconImageView.setImageURI(hour.condition.icon)
+        val fullUrl = "https:${hourlyData.condition.icon}"
+        Glide.with(holder.itemView.context)
+            .load(fullUrl)
+            .into(holder.hourlyWeatherIcon)
+        holder.hourlyTempText.text = "${hourlyData.temp_c}°C"
+
+
+    }
+    private fun timeFormat(timeString: String): String {
+        return try {
+            SimpleDateFormat("HH:mm", Locale.getDefault()).format(
+                SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(timeString)
+            )
+        } catch (e: Exception) {
+            ""
+        }
     }
 
 
     override fun getItemCount(): Int {
-        return hourlyForecast.size
+        return hourlyDataList.size
     }
-
 }

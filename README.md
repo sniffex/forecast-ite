@@ -7,7 +7,7 @@ This is a Kotlin-based weather app that uses the weatherapi.com API to fetch wea
 **Features:**
 
 * Displays the current weather conditions, including temperature, humidity, wind speed, and precipitation
-* Shows the weather forecast for the next 7 days
+* Shows the weather forecast for the next hours
 * Allows users to search for cities by name or zip code
 * Supports both Fahrenheit and Celsius temperature units
 
