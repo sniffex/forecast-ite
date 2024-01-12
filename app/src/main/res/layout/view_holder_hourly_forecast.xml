@@ -10,7 +10,6 @@
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:orientation="vertical"
-        android:background="@color/gray"
         android:gravity="center"
         tools:ignore="UselessParent">
 

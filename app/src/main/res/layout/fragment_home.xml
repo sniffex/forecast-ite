@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/bg_1"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -159,17 +159,19 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="#80FFFFFF"
                 android:layout_marginBottom="10dp">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:background="@color/gray"
                     android:padding="10dp">
 
                     <TextView
@@ -312,12 +314,12 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="#80FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="@color/gray"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
                     android:padding="10dp">
@@ -331,12 +333,10 @@
                         android:textSize="18sp"
                         />
 
-
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/hourlyRecyclerView"
                             android:layout_width="wrap_content"
                             android:layout_height="100dp"
-                            android:background="@color/transparent"
                             android:orientation="horizontal"
                             tools:listitem="@layout/view_holder_hourly_forecast"/>
 

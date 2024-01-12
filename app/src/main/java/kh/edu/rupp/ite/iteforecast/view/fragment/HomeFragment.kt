@@ -83,7 +83,6 @@ class HomeFragment: Fragment() {
     }
 
     private fun setupHourlyRecyclerView(hourlyDataList: List<Hour>) {
-
         val hourlyAdapter = HourlyAdapter(hourlyDataList)
         binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.hourlyRecyclerView.adapter = hourlyAdapter
