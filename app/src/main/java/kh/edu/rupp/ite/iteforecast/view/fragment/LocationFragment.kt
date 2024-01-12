@@ -30,6 +30,7 @@ class LocationFragment : Fragment() {
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

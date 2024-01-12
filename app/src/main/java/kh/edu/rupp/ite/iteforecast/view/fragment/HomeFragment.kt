@@ -2,9 +2,7 @@ package kh.edu.rupp.ite.iteforecast.view.fragment
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.icu.text.SimpleDateFormat
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
 import kh.edu.rupp.ite.iteforecast.R
@@ -26,7 +23,6 @@ import kh.edu.rupp.ite.iteforecast.databinding.FragmentHomeBinding
 import kh.edu.rupp.ite.iteforecast.model.Hour
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
-import java.util.Date
 
 class HomeFragment: Fragment() {
 
@@ -45,11 +41,17 @@ class HomeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Request location permission and get location when the fragment is created
         requestLocationPermission()
 //        updateWeatherForLocation("London")
 //        updateLocationByLonLat(48.8567,2.3508)
+
+
+
     }
+
+
 
     private fun updateUI(weatherResponse: List<WeatherResponse>) {
         val current = weatherResponse[0].current
