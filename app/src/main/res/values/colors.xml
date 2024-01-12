@@ -22,4 +22,6 @@
     <color name="search_view_dark">#AB090909</color>
     <color name="search_view_light">#D5FFFFFF</color>
     <color name="progress_bar">#30FFBD</color>
+
+    <color name="selectedItemBackground">#FFEB3B</color>
 </resources>
