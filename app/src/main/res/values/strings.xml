@@ -28,6 +28,7 @@
     <string name="uvIndex">UV Index : 1</string>
     <string name="chanceToRain">Rain : 10%</string>
     <string name="dayForecastLabel">5-day forecast</string>
+    <string name="hourForecastLabel">Hourly forecast</string>
     <string name="imageDesc1">DynamicImage</string>
     <string name="direction">direction</string>
     <string name="tempDaily">21℃</string>

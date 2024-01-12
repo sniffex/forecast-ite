@@ -29,7 +29,6 @@ class WeatherActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.iconHome -> replaceFragment(HomeFragment())
                 R.id.iconLocation -> replaceFragment(LocationFragment())
-
                 else -> {
 
                 }
