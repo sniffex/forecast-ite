@@ -68,6 +68,11 @@ class HomeFragment: Fragment() {
         binding.windDirText.text = "(${current.wind_dir})"
 
         binding.recyclerViewHourlyForecast.adapter = HourlyForecastAdapter(weatherResponse[0].forecast.forecastday[0].hour)
+
+        binding.sunriseText.text = "Sunrise: ${weatherResponse[0].forecast.forecastday[0].astro.sunrise}"
+        binding.sunsetText.text = "Sunset: ${weatherResponse[0].forecast.forecastday[0].astro.sunset}"
+        binding.uvIndexText.text = "UV Index: ${weatherResponse[0].current.uv}"
+        binding.rainText.text = "Rain: ${weatherResponse[0].forecast.forecastday[0].day.totalprecip_mm} mm"
     }
 
     private fun updateWeatherForLocation(location: String) {
