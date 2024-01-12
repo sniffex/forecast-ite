@@ -11,6 +11,14 @@
 
 
     </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
     <style name="Theme.ITEForecast.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.ITEForecast.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="Theme.ITEForecast" parent="Base.Theme.ITEForecast" />

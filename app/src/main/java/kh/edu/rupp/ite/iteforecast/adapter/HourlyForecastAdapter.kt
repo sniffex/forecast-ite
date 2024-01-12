@@ -1,31 +1,32 @@
 package kh.edu.rupp.ite.iteforecast.adapter
 
 import android.icu.text.SimpleDateFormat
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kh.edu.rupp.ite.iteforecast.R
+import kh.edu.rupp.ite.iteforecast.databinding.ViewHolderHourlyForecastBinding
 import kh.edu.rupp.ite.iteforecast.model.Hour
-import java.time.LocalDateTime
-import java.util.Date
 import java.util.Locale
 
 class HourlyAdapter(private val hourlyDataList: List<Hour>) :
     RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
 
-    class HourlyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val hourlyShortDateText: TextView = itemView.findViewById(R.id.hourlyShortDateText)
-        val hourlyWeatherIcon: ImageView = itemView.findViewById(R.id.hourlyWeatherIcon)
-        val hourlyTempText: TextView = itemView.findViewById(R.id.hourlyTempText)
+    class HourlyViewHolder(binding: ViewHolderHourlyForecastBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val hourlyShortDateText: TextView = binding.hourlyShortDateText
+        val hourlyWeatherIcon: ImageView = binding. hourlyWeatherIcon
+        val hourlyTempText: TextView = binding.hourlyTempText
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_hourly_forecast, parent, false)
+        val view = ViewHolderHourlyForecastBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return HourlyViewHolder(view)
     }
 
