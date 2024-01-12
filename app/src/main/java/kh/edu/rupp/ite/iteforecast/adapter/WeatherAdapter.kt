@@ -20,7 +20,7 @@ import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 
 class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
-    public val weatherList: MutableList<WeatherResponse> = mutableListOf()
+    val weatherList: MutableList<WeatherResponse> = mutableListOf()
 
     fun updateData(newWeatherList: List<WeatherResponse>) {
         this.weatherList.clear()
@@ -101,7 +101,9 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
         ) {
             private val cornerRadius = 30f
             private val background: Drawable = createSwipeBackground()
-            private val deleteIcon = ContextCompat.getDrawable(recyclerView.context, R.drawable.ic_delete)
+            private val deleteIcon = ContextCompat.getDrawable(recyclerView.context, R.drawable.ic_delete)?.apply {
+                setTint(Color.WHITE)
+            }
 
             private fun createSwipeBackground(): Drawable {
                 val shapeDrawable = ShapeDrawable()
@@ -116,7 +118,7 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
                     null
                 )
                 shapeDrawable.shape = roundRectShape
-                shapeDrawable.paint.color = Color.RED // Change color as needed
+                shapeDrawable.paint.color = Color.RED
                 return shapeDrawable
             }
 

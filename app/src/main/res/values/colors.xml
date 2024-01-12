@@ -23,7 +23,7 @@
     <color name="search_view_light">#D5FFFFFF</color>
     <color name="progress_bar">#30FFBD</color>
 
-    <color name="selectedItemBackground">#FFEB3B</color>
+    <color name="delete">#C70039</color>
 
     <color name="blur_bg">#80FFFFFF</color>
 </resources>
