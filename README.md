@@ -16,7 +16,7 @@ This is a Kotlin-based weather app that uses the weatherapi.com API to fetch wea
 1. Open the app and enter the name of a city or zip code in the search bar.
 2. Tap the "Search" button to fetch the weather data for the selected city.
 3. The current weather conditions will be displayed at the top of the screen.
-4. To view the weather forecast for the next 7 days, scroll down the screen.
+4. To view the weather forecast for the next 5 days, scroll down the screen.
 
 **Technology Used:**
 
