@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
 import kh.edu.rupp.ite.iteforecast.R
+import kh.edu.rupp.ite.iteforecast.adapter.DailyForecastAdapter
 import kh.edu.rupp.ite.iteforecast.adapter.HourlyAdapter
 import kh.edu.rupp.ite.iteforecast.databinding.FragmentHomeBinding
+import kh.edu.rupp.ite.iteforecast.model.ForecastDay
 import kh.edu.rupp.ite.iteforecast.model.Hour
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
@@ -42,16 +44,10 @@ class HomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Request location permission and get location when the fragment is created
         requestLocationPermission()
 //        updateWeatherForLocation("London")
 //        updateLocationByLonLat(48.8567,2.3508)
-
-
-
     }
-
-
 
     private fun updateUI(weatherResponse: List<WeatherResponse>) {
         val current = weatherResponse[0].current
@@ -73,6 +69,10 @@ class HomeFragment: Fragment() {
         binding.windText.text = "Wind: ${current.wind_kph} km/h"
         binding.windDirText.text = "(${current.wind_dir})"
 
+        setupHourlyRecyclerView(weatherResponse[0].forecast.forecastday[0].hour)
+        //setup the daily recycler view to get the List<Forecast> from the weatherResponse
+        setUpDailyRecyclerView(weatherResponse[0].forecast.forecastday)
+
         binding.sunriseText.text = "Sunrise: ${weatherResponse[0].forecast.forecastday[0].astro.sunrise}"
         binding.sunsetText.text = "Sunset: ${weatherResponse[0].forecast.forecastday[0].astro.sunset}"
         binding.uvIndexText.text = "UV Index: ${weatherResponse[0].current.uv}"
@@ -87,6 +87,12 @@ class HomeFragment: Fragment() {
         val hourlyAdapter = HourlyAdapter(hourlyDataList)
         binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.hourlyRecyclerView.adapter = hourlyAdapter
+    }
+
+    private fun setUpDailyRecyclerView(dailyDataList: List<ForecastDay>) {
+        val dailyAdapter = DailyForecastAdapter(dailyDataList)
+        binding.dailyRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.dailyRecyclerView.adapter = dailyAdapter
     }
 
 

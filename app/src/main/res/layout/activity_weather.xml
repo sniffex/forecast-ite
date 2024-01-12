@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     xmlns:tool="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/bg_1"
     tool:context=".view.activity.WeatherActivity">
 
 
     <FrameLayout
         android:id="@+id/activityWeatherFragmentContainer"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
@@ -18,9 +20,16 @@
         android:id="@+id/activityWeatherBottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/gray"
-        app:itemBackground="@color/gray"
-        android:background="@color/gray"
-        app:menu="@menu/weather_activity" />
+        android:background="@drawable/menu_bg"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        app:menu="@menu/weather_activity"
+        android:backgroundTint="@color/transparent"
+        app:itemIconSize="30dp"
+        app:backgroundTint="@color/transparent"
+        app:itemTextColor="@color/item_selector"
+        app:itemBackground="@color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        />
 
 </LinearLayout>

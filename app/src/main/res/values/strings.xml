@@ -32,7 +32,7 @@
     <string name="imageDesc1">DynamicImage</string>
     <string name="direction">direction</string>
     <string name="tempDaily">21℃</string>
-    <string name="TimeDaily">11:00</string>
-    <string name="hourlyDate">Jan/08</string>
+    <string name="TimeDaily">Jan/08</string>
+    <string name="hourlyTextView">12:00</string>
 
 </resources>
