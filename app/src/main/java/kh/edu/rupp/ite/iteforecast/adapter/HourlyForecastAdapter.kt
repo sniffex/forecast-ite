@@ -17,7 +17,6 @@ class HourlyForecastAdapter(var hourlyForecast: List<Hour>) : RecyclerView.Adapt
         val forecastTempTextView: TextView = itemView.findViewById(R.id.hourlyTempText)
         val forecastIconImageView: ImageView = itemView.findViewById(R.id.hourlyWeatherIcon)
 
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyForecastViewHolder {

@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
 import kh.edu.rupp.ite.iteforecast.R
+import kh.edu.rupp.ite.iteforecast.adapter.HourlyForecastAdapter
 import kh.edu.rupp.ite.iteforecast.databinding.FragmentHomeBinding
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 import kh.edu.rupp.ite.iteforecast.viewmodel.WeatherViewModel
@@ -51,6 +52,7 @@ class HomeFragment: Fragment() {
         val location = weatherResponse[0].location
         val condition = current.condition
 
+
         binding.locationText.text = location.name
         binding.temperatureText.text = "${current.temp_c}°C"
         binding.conditionText.text = condition.text
@@ -64,6 +66,8 @@ class HomeFragment: Fragment() {
         binding.uvIndexText.text = "UV Index: ${current.uv}"
         binding.windText.text = "Wind: ${current.wind_kph} km/h"
         binding.windDirText.text = "(${current.wind_dir})"
+
+        binding.recyclerViewHourlyForecast.adapter = HourlyForecastAdapter(weatherResponse[0].forecast.forecastday[0].hour)
     }
 
     private fun updateWeatherForLocation(location: String) {
