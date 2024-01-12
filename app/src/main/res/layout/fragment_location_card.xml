@@ -8,171 +8,180 @@
     app:cardCornerRadius="15dp"
     app:cardElevation="10dp">
 
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:padding="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="110dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="4dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="start"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/locationCity"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:text="Location City"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/locationCountry"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/locationCity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Location City"
+                            android:textColor="@android:color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/locationCountry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Location Country"
+                            android:textColor="@android:color/white"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:text="Location Country"
-                        android:textSize="12dp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="32"
+                            android:textColor="@android:color/white"
+                            android:textSize="32dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="°C"
+                            android:textColor="@android:color/white"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+
                 </LinearLayout>
+
+                <!-- Column 1 -->
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/weatherIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="4dp"
+                        android:src="@drawable/cloud" />
+
                     <TextView
-                        android:id="@+id/temperature"
-                        android:layout_width="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:textSize="32dp"
-                        android:text="32"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="@android:color/white"
-                        android:textSize="20dp"
-                        android:text="°C"
-                        android:layout_height="wrap_content"/>
+                        android:id="@+id/weatherDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Overcast"
+                        android:textColor="@android:color/white" />
+
                 </LinearLayout>
 
-            </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
 
-            <!-- Column 1 -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                    android:layout_margin="4dp"
+                    android:background="@android:color/white" />
 
-                <ImageView
-                    android:id="@+id/weatherIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="4dp"
-                    android:src="@drawable/cloud" />
-
-                <TextView
-                    android:id="@+id/weatherDescription"
-                    android:layout_width="match_parent"
+                <!-- Column 2 -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Overcast"
-                    android:textColor="@android:color/white" />
 
-            </LinearLayout>
+                    android:orientation="vertical">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="4dp"
+                        android:src="@drawable/wind" />
 
-                android:layout_margin="4dp"
-                android:background="@android:color/white" />
+                    <TextView
+                        android:id="@+id/windSpeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Wind: 10 km/h"
+                        android:textColor="@android:color/white" />
 
-            <!-- Column 2 -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
 
-                android:orientation="vertical">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="4dp"
-                    android:src="@drawable/wind" />
 
-                <TextView
-                    android:id="@+id/windSpeed"
-                    android:layout_width="match_parent"
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/white" />
+                <!-- Column 3 -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Wind: 10 km/h"
-                    android:textColor="@android:color/white" />
+
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="4dp"
+                        android:src="@drawable/humidity" />
 
 
+                    <TextView
+                        android:id="@+id/humidityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Humidity: 10%"
+                        android:textColor="@android:color/white" />
 
 
+                </LinearLayout>
+
+                <!-- Add more columns as needed -->
 
             </LinearLayout>
-
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:background="@android:color/white" />
-            <!-- Column 3 -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="20dp"
-                    android:layout_marginBottom="4dp"
-                    android:src="@drawable/humidity" />
-
-
-                <TextView
-                    android:id="@+id/humidityText"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Humidity: 10%"
-                    android:textColor="@android:color/white" />
-
-
-
-            </LinearLayout>
-
-            <!-- Add more columns as needed -->
 
         </LinearLayout>
 
-    </LinearLayout>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.cardview.widget.CardView>
