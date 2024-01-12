@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kh.edu.rupp.ite.iteforecast.R
+import kh.edu.rupp.ite.iteforecast.model.Hour
 import kh.edu.rupp.ite.iteforecast.model.WeatherResponse
 
 
@@ -29,6 +30,7 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
         val context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_location_card, parent, false)
         return WeatherViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
@@ -63,6 +65,8 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
             // Load weather icon using Glide or any other image loading library
             // Example using Glide:
             weatherIconImageView.setImageURI(weatherResponse.current.condition.icon)
+
+
         }
 
         private fun ImageView.setImageURI(icon: String) {
@@ -74,4 +78,6 @@ class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
                 .into(this)
         }
     }
+
+
 }
