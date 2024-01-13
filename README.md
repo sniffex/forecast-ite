@@ -2,7 +2,7 @@
 
 **Project description:**
 
-This is a Kotlin-based weather app that uses the weatherapi.com API to fetch weather data for a given city. The app displays the current weather conditions, as well as the forecast for the next 7 days.
+This is a Kotlin-based weather app that uses the weatherapi.com API to fetch weather data for a given city. The app displays the current weather conditions, as well as the forecast for the next 5 days.
 
 **Features:**
 
